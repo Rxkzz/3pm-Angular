@@ -18,6 +18,8 @@ body{
 }
 
 .card{
+    margin: auto;
+    margin-top: 150px;
     width: 350px;
     background-color: #FFFFFF;
     display: flex;
@@ -26,6 +28,7 @@ body{
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
 }
 
 .card h2{
