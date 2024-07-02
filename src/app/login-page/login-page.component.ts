@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -41,19 +41,19 @@ export class LoginPageComponent {
   email: string = '';
   password: string = '';
 
+  constructor(private router: Router) {}
+
   onSubmit() {
-    if (!this.email && !this.password) {
+    if (!this.email || !this.password) {
       alert('Silakan isi alamat email dan kata sandi Anda.');
-    } else if (!this.email) {
-      alert('Silakan isi alamat email Anda.');
-    } else if (!this.password) {
-      alert('Silakan isi kata sandi Anda.');
-    } else if (!this.email.includes('@gmail')) {
-      alert('Alamat email harus mengandung karakter "@gmail"');
     } else if (this.email.length < 5) {
       alert('Alamat email harus memiliki minimal 5 karakter.');
+    } else if (!this.email.includes('@gmail')) {
+      alert('Alamat email harus mengandung karakter "@gmail"');
     } else if (this.password.length < 8) {
       alert('Kata sandi harus memiliki minimal 8 karakter.');
+    } else {
+      this.router.navigate(['/dashboard']); // Navigasi ke halaman berikutnya jika semua field sudah terisi
     }
   }
 }
